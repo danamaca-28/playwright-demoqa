@@ -18,7 +18,7 @@ The tests cover the **Elements** section of the [demoqa.com](https://demoqa.com/
 
  Run a Specific Test File
 
-npx playwright test demo-todo-app.spec.ts
+npx playwright test invalid-email.spec.ts
  Run Tests in a Specific Browser
 
 npx playwright test --project=firefox
