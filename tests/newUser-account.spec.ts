@@ -12,8 +12,6 @@ test('Register new user up to captcha checkbox', async ({ page }) => {
   //const captchaCheckbox = page.locator('.recaptcha-checkbox-border'); // selector pentru checkbox reCaptcha
   //await captchaCheckbox.click();
 
-  // Aici nu putem trimite formularul automat, pentru că ar fi nevoie să rezolvăm captcha real
 
-  // Dacă vrei, poți opri aici testul și să faci un assert că formularul e completat corect
   await expect(page.locator('#userName')).toHaveValue('andreea.nasa12345');
 });
