@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('User Registration - email invalid', async ({ page }) => {
   await page.goto('https://demoqa.com/automation-practice-form'); 
-
+  test.setTimeout(60000);
   // Completează câmpurile necesare
   await page.fill('#firstName', 'Ion');
   await page.fill('#lastName', 'Popescu');

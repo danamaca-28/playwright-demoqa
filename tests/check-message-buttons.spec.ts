@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 test('Interacțiuni cu toate butoanele + validare mesaje', async ({ page }) => {
-  await page.goto('https://demoqa.com/buttons');
+
+  await page.goto('https://demoqa.com/buttons', { timeout: 60000 });
+ test.setTimeout(60000);
 
   // Double click
   await page.dblclick('#doubleClickBtn');

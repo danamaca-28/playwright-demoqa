@@ -3,8 +3,7 @@ import { test, expect } from '@playwright/test';
 
 test('Add valid data - cu selectori mai robusti', async ({ page }) => {
   await page.goto('https://demoqa.com/webtables');
-
- // Butonul - dacă nu găsești după id, caută după text
+test.setTimeout(60000);
  await page.click('#addNewRecordButton');
 
   await page.fill("#firstName", 'Ion ');
