@@ -49,6 +49,38 @@ Automated Tests Details
 
 Most of the automated tests in this project are working correctly; however, there are a few tests that currently fail in some environments due to known issues:
 
+## Known Issues / API Limitations
+
+### ❌ Edit book via PUT not supported
+
+The DemoQA BookStore API does **not support editing a book** in a user's collection using the `PUT /BookStore/v1/Books` endpoint.
+
+#### What happens:
+When attempting to update a book with a `PUT` request, the API responds with:
+
+or a `404 Not Found` error.
+
+#### Workaround:
+To simulate updating a book:
+1. Delete the existing book using `DELETE /BookStore/v1/Book`
+2. Add the new book using `POST /BookStore/v1/Books`
+
+This approach achieves the same outcome.
+
+#### Related test:
+- `tests/api/edit-book.spec.ts`: this test fails if `PUT` is used directly and should be rewritten using the workaround.
+
+## Known Issues and Bug Reports
+
+During testing, several unexpected behaviors and inconsistencies were observed in the DemoQA BookStore API. These include:
+
+- Lack of support for updating books via PUT requests.
+- Inconsistent response codes on authentication and book operations.
+- Validation errors related to userId and token usage.
+
+Detailed bug reports and observations have been documented throughout the project to help better understand these issues and suggest possible workarounds (Please consult the bug reports for more information and context about these issues)
+
+
 The tests related to login and accessing the Book Store (tests/bookstore.spec.ts) occasionally experience stability issues, especially on certain browsers (Chromium, Firefox, Webkit). These failures are most likely caused by varying page load times or dynamic conditions during the test execution.
 The test for registering a new user (tests/new.account.spec.ts), specifically the part involving the captcha checkbox validation, cannot be fully automated in real conditions because captcha is designed to prevent automation. For the testing environment, it is recommended to either disable captcha or use a special test mode that bypasses this validation.
 Future Plans:
