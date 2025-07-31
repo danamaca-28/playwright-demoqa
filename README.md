@@ -32,3 +32,17 @@ Run All Tests with UI
 npx playwright test --ui
  Playwright Test runner interface in your browser
 
+
+📝 Additional Notes
+
+API tests are located in the tests/api folder and cover REST endpoints such as login, adding/editing/deleting books or items.
+Test reports and traces are generated automatically on failures for easier debugging.
+GitHub Actions are configured to run tests automatically on push and pull requests.
+📖 Test Plan / Strategy (Summary)
+
+What is being tested: UI functionality (login, form validation, UI elements) and API endpoints (CRUD operations on items/books).
+Test coverage: Positive and negative scenarios, including valid/invalid inputs and API error handling.
+Tools used: Playwright for UI automation and API testing due to its speed and all-in-one capabilities.
+How to run: See instructions above.
+Assumptions: Tests require an internet connection and stable access to demoqa.com.
+Limitations: Tests are for demo purposes and do not cover every possible edge case or performance testing.
