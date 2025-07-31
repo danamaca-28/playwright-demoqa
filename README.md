@@ -74,6 +74,21 @@ This approach achieves the same outcome.
 #### Related test:
 - `tests/api/edit-book.spec.ts`: this test fails if `PUT` is used directly and should be rewritten using the workaround.
 
+During automated API testing for the DemoQA BookStore, the test that tries to replace an existing book with another (using the PUT /BookStore/v1/Books endpoint) fails. Specifically, the test expects that after the update, the user’s book list contains the new ISBN (isbn2), but the API response still shows the original ISBN (isbn).
+
+What was manually tested in Postman
+The following steps were tested manually in Postman:
+
+Create a new user (POST /Account/v1/User) — received correct response with status 201 and a userID.
+Generate an authentication token (POST /Account/v1/GenerateToken) — received correct response with status 200 and a valid token.
+Add a book to the user (POST /BookStore/v1/Books) — book was successfully added.
+Attempt to replace the book (PUT /BookStore/v1/Books) — response status was 200, but checking the user’s book collection afterward showed the original book, not the new one.
+
+The PUT /BookStore/v1/Books endpoint does not actually update the user’s book collection in the backend, even though it returns a 200 status.
+Most likely, the DemoQA API does not support replacing a book via this endpoint or has incomplete implementation for this functionality.
+The API response after the supposed update does not reflect the expected change, so the test fails when verifying that the user’s books contain the new ISBN.
+Conclusion
+The automated test for editing (replacing) a book fails because the DemoQA API does not persist the update, despite returning a success status. This is a limitation of the tested API, not an issue with the test script itself.
 ## Known Issues and Bug Reports
 
 During testing, several unexpected behaviors and inconsistencies were observed in the DemoQA BookStore API. These include:
