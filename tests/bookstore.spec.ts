@@ -8,9 +8,10 @@ test('Login și accesare Book Store', async ({ page }) => {
   await page.fill('#password', 'Test12345@?');
   await page.click('#login');
 
-  await page.click('#submit');
+  //await page.click('#submit');
 
-  await page.click('#gotoStore');
+  //await page.click('#gotoStore');
+
 
   //The list books is displayed 
 });

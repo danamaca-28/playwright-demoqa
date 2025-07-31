@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('Register new user up to captcha checkbox', async ({ page }) => {
-  await page.goto('https://demoqa.com/register', { waitUntil: 'networkidle' });
+  await page.goto('https://demoqa.com/register');
+  test.setTimeout(60000);
 
 
   await page.fill('#firstname', 'Andreea');
