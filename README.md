@@ -44,6 +44,7 @@ npx playwright test --ui
 API tests are located in the tests/api folder and cover REST endpoints such as login, adding/editing/deleting books or items.
 Test reports and traces are generated automatically on failures for easier debugging.
 GitHub Actions are configured to run tests automatically on push and pull requests.
+
 Automated Tests Details
 
 Most of the automated tests in this project are working correctly; however, there are a few tests that currently fail in some environments due to known issues:
