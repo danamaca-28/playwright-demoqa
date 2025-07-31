@@ -2,7 +2,7 @@
 # 🧪 Playwright Tests for DemoQA Elements
 
 This repository contains automated UI tests written in **TypeScript** using **Playwright**.  
-The tests cover the **Elements** section of the [demoqa.com](https://demoqa.com/) website, including form validation, links, and UI feedback messages.
+The tests cover the **Elements** section of the (https://demoqa.com/) website, including form validation, links, and UI feedback messages.
 
 My project uses Playwright with TypeScript to automate both UI and API tests for the DemoQA website. The tests focus on core user workflows such as login, form validation, navigation via links, and CRUD operations on items/books through API endpoints.
 
@@ -44,7 +44,18 @@ npx playwright test --ui
 API tests are located in the tests/api folder and cover REST endpoints such as login, adding/editing/deleting books or items.
 Test reports and traces are generated automatically on failures for easier debugging.
 GitHub Actions are configured to run tests automatically on push and pull requests.
-📖 Test Plan / Strategy (Summary)
+Automated Tests Details
+
+Most of the automated tests in this project are working correctly; however, there are a few tests that currently fail in some environments due to known issues:
+
+The tests related to login and accessing the Book Store (tests/bookstore.spec.ts) occasionally experience stability issues, especially on certain browsers (Chromium, Firefox, Webkit). These failures are most likely caused by varying page load times or dynamic conditions during the test execution.
+The test for registering a new user (tests/new.account.spec.ts), specifically the part involving the captcha checkbox validation, cannot be fully automated in real conditions because captcha is designed to prevent automation. For the testing environment, it is recommended to either disable captcha or use a special test mode that bypasses this validation.
+Future Plans:
+Improve UI test stability by optimizing waits and adding better synchronization mechanisms (waitFor).
+Implement a mock or bypass solution for captcha in the test environment to allow full testing of the registration flow.
+Currently, the failing tests do not affect core functionality and do not block project development.
+
+📖 Test Plan 
 
 What is being tested: UI functionality (login, form validation, UI elements) and API endpoints (CRUD operations on items/books).
 Test coverage: Positive and negative scenarios, including valid/invalid inputs and API error handling.
