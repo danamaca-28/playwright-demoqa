@@ -7,6 +7,7 @@ test('Add a book to a newly created user via API', async () => {
       'Content-Type': 'application/json',
     },
   });
+  
 
   const username = `user_${Date.now()}`;
   const password = 'StrongPass!123';
@@ -29,6 +30,14 @@ test('Add a book to a newly created user via API', async () => {
   expect(tokenRes.status()).toBe(200);
   const tokenData = await tokenRes.json();
   const token = tokenData.token;
+
+  // 2.5 Validate token (authorize)
+const authRes = await context.post('/Account/v1/Authorized', {
+  data: { token },  // token în body, nu în header
+});
+
+expect(authRes.status()).toBe(200);
+
 
   // 3. Add book
   const bookRes = await context.post('/BookStore/v1/Books', {
