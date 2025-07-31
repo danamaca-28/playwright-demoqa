@@ -38,6 +38,10 @@ Run All Tests with UI
 npx playwright test --ui
  Playwright Test runner interface in your browser
 
+ Run all tests 
+
+ npx playwright test
+
 
 📝 Additional Notes
 
