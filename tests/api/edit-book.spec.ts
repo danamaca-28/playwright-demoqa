@@ -10,7 +10,7 @@ test('Edit book by replacing it with another one', async () => {
   
     const username = `user_${Date.now()}`;
     const password = 'StrongPass!123';
-    const isbn1 = '9781449331818';
+    const isbn = '9781449331818';
     const isbn2 = '9781449325862'; // carte nouă
   
     // Create user
@@ -25,22 +25,40 @@ test('Edit book by replacing it with another one', async () => {
       data: { userName: username, password },
     });
     const token = (await tokenRes.json()).token;
+
+
+ // DELETE the first book
+await context.delete(`/BookStore/v1/Book`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: {
+      userId,
+      isbn: isbn,
+    },
+  });
+
+  await new Promise((res) => setTimeout(res, 1000));
+
   
-    // Add book
-    await context.post('/BookStore/v1/Books', {
-      headers: { Authorization: `Bearer ${token}` },
-      data: {
-        userId,
-        collectionOfIsbns: [{ isbn: isbn1 }],
-      },
-    });
+  // THEN add the new book
+  await context.post('/BookStore/v1/Books', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: {
+      userId,
+      collectionOfIsbns: [{ isbn: isbn2 }],
+    },
+  });
+  
   
     // Replace book (edit)
     const editRes = await context.put('/BookStore/v1/Books', {
       headers: { Authorization: `Bearer ${token}` },
       data: {
         userId,
-        isbn: isbn1,
+        isbn: isbn,
         newIsbn: isbn2,
       },
     });
