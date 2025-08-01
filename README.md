@@ -9,8 +9,7 @@ My project uses Playwright with TypeScript to automate both UI and API tests for
 UI Tests: Cover scenarios like valid/invalid login, new account creation, button states, link validation, and UI feedback messages. These tests verify element presence, input validations, button enabling/disabling, and message displays to ensure the frontend behaves correctly.
 API Tests: Use Playwright’s API testing capabilities to automate CRUD operations on backend endpoints, including creating users, adding books, editing, and deleting items. Both positive and negative cases are included to validate proper API behavior and error handling.
 Test Organization: Tests are well-structured under separate folders (tests/ for UI, tests/api/ for API) for clarity and maintainability.
-Execution & Reporting: Tests can be run selectively or fully across browsers via CLI commands, and test failures generate trace files for easier debugging. You also have plans or partial setup for CI integration via GitHub Actions.
-Overall: Your approach balances comprehensive functional coverage with maintainable code, leveraging Playwright’s all-in-one framework for end-to-end automation in a simple and efficient way.---
+Execution & Reporting: Tests can be run selectively or fully across browsers via CLI commands, and test failures generate trace files for easier debugging.
 
 ## 📦 Technologies Used
 
